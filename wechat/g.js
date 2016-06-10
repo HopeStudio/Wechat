@@ -29,21 +29,9 @@ module.exports = function(config) {
             });
             var content = yield util.parseXMLAsync(data);
             var message = util.formatMessage(content.xml);
-            if (message.MsgType === 'event') {
-                if (message.Event === 'subscribe') {
-                    var now = new Date().getTime();
-                    this.status = 200;
-                    this.type = 'application/xml';
-                    this.body = '<xml>' +
-                        '<ToUserName><![CDATA[' + message['FromUserName'] + ']]></ToUserName>' +
-                        '<FromUserName><![CDATA[' + message['ToUserName'] + ']]></FromUserName>' +
-                        '<CreateTime>' + now + '</CreateTime>' +
-                        '<MsgType><![CDATA[text]]></MsgType>' +
-                        '<Content><![CDATA[你好]]></Content>' +
-                        '</xml>'
-                    return;
-                }
-            }
+            this.weixin = message;
+            yield handler.call(this, next);
+            wechat.reply.call(this);
         }
     }
 }
