@@ -1,8 +1,7 @@
 'use strict'
 var path = require('path'),
-    util = require('./libs/util'),
-    wechat = require('./wechat/g');
-var wechat_file = path.join(__dirname, './config/wechat.txt');
+    util = require('../libs/util');
+var wechat_file = path.join(__dirname, './wechat.txt');
 module.exports = {
     wechat: {
         AppID: 'wx197d2fe43e9c42b7',

@@ -1,7 +1,9 @@
 'use strict'
-
+// bluebird模块
 var Promise = require('bluebird');
+// request模块
 var request = Promise.promisify(require('request'));
+
 var util = require('./util')
 var prefix = 'https://api.weixin.qq.com/cgi-bin/';
 var api = {
@@ -67,6 +69,5 @@ Wechat.prototype.reply = function() {
     this.status = 200;
     this.type = 'application/xml';
     this.body = xml;
-
 }
 module.exports = Wechat;
