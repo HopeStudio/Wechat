@@ -1,4 +1,7 @@
 'use strict'
+var config = require('../config/config');
+var Wechat = require('./wechat');
+var wechatApi = new Wechat(config.wechat);
 exports.reply = function*(next) {
     var message = this.weixin;
     if (message.MsgType === 'event') {
@@ -47,6 +50,14 @@ exports.reply = function*(next) {
                     description: '我是个描述呀',
                     picUrl: 'https://img.alicdn.com/tps/TB19hmwJVXXXXafXVXXXXXXXXXX-321-80.jpg'
                 }];
+                break;
+            case '4':
+                var data = yield wechatApi.uploadMaterial('image', __dirname + '/2.jpg');
+                reply = {
+                    type: 'image',
+                    mediaId: data.media_id
+                }
+                console.log(reply)
                 break;
         }
         this.body = reply;
