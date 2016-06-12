@@ -10,7 +10,7 @@ exports.reply = function*(next) {
                 // if (message.EventKey) {
                 //     console.log("扫二维码进来" + message.EventKey + "," + message.ticket);
                 // }
-                this.body = '欢迎关注One干货集中营';
+                this.body = '欢迎关注One干货集中营!!!';
                 break;
             case 'unsubscribe':
                 console.log('取消关注...');
@@ -30,6 +30,7 @@ exports.reply = function*(next) {
                 this.body = '点击了菜单中的链接:' + message.EventKey;
         }
     } else if (message.MsgType === 'text') {
+        console.log('hi')
         var content = message.Content;
         var reply = '额，你说的' + content + '太复杂';
         switch (content) {

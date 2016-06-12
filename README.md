@@ -48,6 +48,7 @@ ultrahook --k hl8sQ1i24bQEIGrhDqexBbQ7lUtVtPO7 localhost 1234
 
 npm install -g localtunnel
 lt --port 1234
+lt --port 3100 --subdomain yowangbinwecaht
 
 
 ## 配置、接入微信公众号
